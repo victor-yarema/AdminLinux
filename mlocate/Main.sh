@@ -39,14 +39,14 @@
   {
     [ ! -e "${FileDb}" ] ||
     {
-      echo "Removing db file '${FileDb}'" &&
+      echo "Removing file '${FileDb}'" &&
       sudo rm -v "${FileDb}"
     }
   } &&
   {
     [ ! -e "${FileCronTask}" ] ||
     {
-      echo "Removing db file '${FileCronTask}'" &&
+      echo "Removing file '${FileCronTask}'" &&
       sudo rm -v "${FileCronTask}"
     }
   } &&
