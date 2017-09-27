@@ -25,7 +25,10 @@
   FreeSpaceBefore="$(( $( stat -f --printf='%a * %s\n' / ) ))"
   echo "Free space before: $( StrBlocks "${FreeSpaceBefore}" )"
 
-  sudo apt remove "${AptPackageName}" &&
+  {
+    [ ! -e "${FileTool}" ] ||
+    sudo apt remove "${AptPackageName}"
+  } &&
   {
     [ ! -e "${FileTool01}" ] ||
     {
