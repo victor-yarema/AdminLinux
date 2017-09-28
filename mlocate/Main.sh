@@ -19,11 +19,13 @@
   echo 'Nothing to do' &&
   exit 0
 
-  DbFileSize="$( stat -c %s "${FileDb}" )"
-  echo "Db file size: $( StrBlocks "${DbFileSize}" )"
+  DbFileSize="$( stat -c %s "${FileDb}" )" &&
+  DbFileSizePretty="$( StrBlocks "${DbFileSize}" )" &&
+  echo "Db file size: ${DbFileSizePretty}" &&
 
-  FreeSpaceBefore="$(( $( stat -f --printf='%a * %s\n' / ) ))"
-  echo "Free space before: $( StrBlocks "${FreeSpaceBefore}" )"
+  FreeSpaceBefore="$(( $( stat -f --printf='%a * %s\n' / ) ))" &&
+  FreeSpaceBeforePretty="$( StrBlocks "${FreeSpaceBefore}" )" &&
+  echo "Free space before: ${FreeSpaceBeforePretty}" &&
 
   {
     [ ! -e "${FileTool}" ] ||
@@ -54,11 +56,13 @@
 
   Res=$?
 
-  FreeSpaceAfter="$(( $( stat -f --printf='%a * %s\n' / ) ))"
-  echo "Free space after: $( StrBlocks "${FreeSpaceAfter}" )"
+  FreeSpaceAfter="$(( $( stat -f --printf='%a * %s\n' / ) ))" &&
+  FreeSpaceAfterPretty="$( StrBlocks "${FreeSpaceAfter}" )" &&
+  echo "Free space after: ${FreeSpaceAfterPretty}" &&
 
-  RelesedSpace="$(( ${FreeSpaceAfter} - ${FreeSpaceBefore} ))"
-  echo "Released space: $( StrBlocks "${RelesedSpace}" )"
+  RelesedSpace="$(( ${FreeSpaceAfter} - ${FreeSpaceBefore} ))" &&
+  RelesedSpacePretty="$( StrBlocks "${RelesedSpace}" )" &&
+  echo "Released space: ${RelesedSpacePretty}" &&
 
   [ ! -e "${FileTool}" ] &&
   [ ! -e "${FileToolLink}" ] &&
